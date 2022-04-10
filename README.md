@@ -2,8 +2,10 @@
 The Wrocław University od Science and Technology - Computer Science - Engineering Thesis
 
 ## Technologies:
-Frontend: Angular + bootstrap
+Frontend: Angular + Bootstrap
 
-Backend: Spring + jwt token + swagger
+Backend: Spring + JWT + Swagger
 
 Database: MySQL
+
+Tests: Selenium + Java
