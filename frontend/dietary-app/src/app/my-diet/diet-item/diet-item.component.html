@@ -1,0 +1,10 @@
+<div class="row"
+  [ngStyle]="{backgroundColor: i % 2 ? '#f0ad4e' : 'transparent'}">
+    <div class="col-sm-4 col-xs-12"><p>{{ diet.product.product_name }}</p></div>
+    <div class="col-sm-1 col-xs-2"><p>{{ roundNumber(diet.product.carbohydrates * diet.weight/100, 1) }}</p></div>
+    <div class="col-sm-1 col-xs-2"><p>{{ roundNumber(diet.product.fat * diet.weight/100, 1) }}</p></div>
+    <div class="col-sm-1 col-xs-2"><p>{{ roundNumber(diet.product.proteins * diet.weight/100, 1) }}</p></div>
+    <div class="col-sm-2 col-xs-3"><p>{{ diet.weight}}</p></div>
+    <div class="col-sm-2 col-xs-3"><p>{{ roundNumber(diet.product.kcal * diet.weight/100, 0) }}</p></div>
+    <div class="col-sm-1 remove"><p><i class="glyphicon glyphicon-remove" (click)="deleteDiet()"></i></p></div>
+</div>

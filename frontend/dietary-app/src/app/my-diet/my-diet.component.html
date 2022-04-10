@@ -1,0 +1,86 @@
+<div class="container">
+  <h2>Dodaj produkt do diety</h2>
+  <form [formGroup]="productForm">
+    <input name="product_name" placeholder="Wpisz nazwę produktu" class="form-control input-group-lg"
+            type="text" formControlName="productName">
+  </form>
+
+  <div class="list-group productList">
+    <button type="button" name="productButton" class="list-group-item " *ngFor="let prod of (products | async); let i = index;" (click)="argModal.show();  setVar(prod);">{{prod.product_name }}</button>
+<!--    <button type="button" class="list-group-item " *ngFor="let prod of (products | async); let i = index;" (click)="smModal.show()"> {{prod.product_name }}</button>-->
+<!--    <button type="button" class="list-group-item " *ngFor="let prod of (products | async); let i = index;" (click)="setVar(prod.product_name)"> {{prod.product_name }} Var</button>-->
+  </div>
+
+
+
+  <div bsModal #argModal="bs-modal" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" (click)="argModal.hide()">&times;</span></button>
+          <h4 class="modal-title" id="exampleModalLabel">Podaj ilość produktu: {{chosenProd.product_name}} (g)</h4>
+        </div>
+        <div class="modal-body">
+          <form  [formGroup]="valueForm">
+            <div class="form-group">
+              <label for="productWeight" class="control-label">Ilość:</label>
+              <input type="text" class="form-control" id="productWeight" formControlName="weight">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="submitWeight" class="btn btn-default" data-dismiss="modal" (click)= "addDiet(); argModal.hide();">Dodaj do diety</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="container">
+  <h2>Sprawdź dodane produkty</h2>
+  <h3>Wybierz date</h3>
+  <form [formGroup]="form">
+
+    <div class="input-group">
+      <input name="date" placeholder="{{todayDate | date:'YYYY-MM-dd':'+0100'}}" class="form-control input-group-lg"
+             type="text" formControlName="date" [(ngModel)]="date">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-warning" (click)="onSearchDiet()"> Wybierz </button>
+      </span>
+    </div>
+  </form>
+</div>
+
+<div class="container-fluid">
+  <div class="row firstRow">
+    <div class="col-xs-4"><p>Nazwa produktu</p></div>
+    <div class="col-xs-1"><p>Węglowodany</p></div>
+    <div class="col-xs-1"><p>Tłuszcz</p></div>
+    <div class="col-xs-1"><p>Białko</p></div>
+    <div class="col-xs-2"><p>Waga</p></div>
+    <div class="col-xs-2"><p>Kcal</p></div>
+    <div class="col-xs-1"><p>Usuń</p></div>
+  </div>
+
+<app-diet-item *ngFor="let diet of (dietElements | async); let i = index;"
+               [dietEl]="diet"
+               [index]="i">
+</app-diet-item>
+
+  <div class="row">
+    <div class="col-sm-4 col-xs-12"><p>Suma</p></div>
+    <div class="col-sm-1 col-xs-2"><p>{{ dietSum.carbohydrates }}</p></div>
+    <div class="col-sm-1 col-xs-2"><p>{{ dietSum.fat }}</p></div>
+    <div class="col-sm-1 col-xs-2"><p>{{ dietSum.proteins }}</p></div>
+    <div class="col-sm-2 col-xs-3"><p>{{ dietSum.weight }}</p></div>
+    <div class="col-sm-2 col-xs-3"><p>{{ dietSum.kcal }}</p></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-9 col-xs-9"><p>Do osiągnięcia dziennego zapotrzebowania spoczynkowego zostało</p></div>
+    <div class="col-sm-2 col-xs-3"><p>{{ kalories() }}</p></div>
+  </div>
+</div>
+
+<app-chart></app-chart>
+

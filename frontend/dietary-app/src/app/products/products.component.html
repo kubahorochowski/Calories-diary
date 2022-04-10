@@ -1,0 +1,159 @@
+<div class="container">
+<form class="well form-horizontal" action=" " method="post"  id="registration_form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <fieldset>
+
+    <!-- Form Name -->
+    <legend><h2><b>Dodaj produkt</b></h2></legend><br>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Nazwa produktu</label>
+      <div class="col-md-6 inputGroupContainer">
+        <div class="input-group">
+          <input placeholder="Nazwa produktu" class="form-control"  type="text" formControlName="productName">
+        </div>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" >Węglowodany</label>
+      <div class="col-md-6 inputGroupContainer">
+        <div class="input-group">
+          <input placeholder="Węglowodany" class="form-control"  type="number" formControlName="carbo">
+        </div>
+      </div>
+    </div>
+
+    <!-- Text input-->
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" >Białko</label>
+      <div class="col-md-6 inputGroupContainer">
+        <div class="input-group">
+          <input placeholder="Białko" class="form-control"  type="number" formControlName="proteins">
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Tłuszcz</label>
+      <div class="col-md-6 inputGroupContainer">
+        <div class="input-group">
+          <input placeholder="Tłuszcz" class="form-control"  type="number" formControlName="fat">
+        </div>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Kalorie/100g</label>
+      <div class="col-md-6 inputGroupContainer">
+        <div class="input-group">
+          <input placeholder="kcal" class="form-control"  type="number" formControlName="kcal">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-5 control-label"></label>
+      <div class="col-md-4"><br>
+        <button type="submit" class="btn btn-warning addProd" ><span class="glyphicon glyphicon-plus"></span> Dodaj produkt</button>
+      </div>
+    </div>
+
+  </fieldset>
+</form>
+</div>
+
+<div class="container allProducts">
+  <button type="submit" id="displayProducts" class="btn btn-warning searchAllProds" (click)="displayProducts()"> Wyświetl wszystkie produkty </button>
+  <div class="row firstRow">
+    <div class="col-sm-3 col-xs-12"><p>Nazwa produktu</p></div>
+    <div class="col-sm-1 col-xs-2"><p>ID</p></div>
+    <div class="col-sm-2 col-xs-2"><p>Węglowodany</p></div>
+    <div class="col-sm-2 col-xs-2"><p>Białko</p></div>
+    <div class="col-sm-2 col-xs-3"><p>Tłuszcz</p></div>
+    <div class="col-sm-1 col-xs-3"><p>Kalorie</p></div>
+    <div class="col-sm-1 col-xs-3"><p>Zmień</p></div>
+  </div>
+  <ul class="productsList">
+    <li *ngFor="let prod of (allProducts | async); let i = index;"
+        [ngStyle]="{backgroundColor: i % 2 ? '#f0ad4e' : 'transparent'}">
+      <div class="row">
+        <div class="col-sm-3 col-xs-12"><p>{{ prod.product_name }}</p></div>
+        <div class="col-sm-1 col-xs-2"><p>{{ prod.product_id }}</p></div>
+        <div class="col-sm-2 col-xs-2"><p>{{ prod.carbohydrates }}</p></div>
+        <div class="col-sm-2 col-xs-2"><p>{{ prod.proteins }}</p></div>
+        <div class="col-sm-2 col-xs-3"><p>{{ prod.fat }}</p></div>
+        <div id="kcalVal" class="col-sm-1 col-xs-3"><p>{{ prod.kcal }}</p></div>
+        <div class="col-sm-1 remove"><p><i class="glyphicon glyphicon-pencil" (click)="argModal.show(); changeProd(prod);"></i></p></div>
+      </div>
+    </li>
+  </ul>
+  <div bsModal #argModal="bs-modal" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" (click)="argModal.hide()">&times;</span></button>
+          <h4 class="modal-title" id="exampleModalLabel">Podaj nowe paramatery</h4>
+        </div>
+        <div class="modal-body">
+          <form  [formGroup]="changeForm">
+            <div class="form-group">
+              <label class="col-md-4 control-label">Nazwa produktu</label>
+              <div class="col-md-6 inputGroupContainer">
+                <div class="input-group">
+                  <input class="form-control"  type="text" formControlName="productName" [(ngModel)]="updatedProduct.product_name">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Węglowodany</label>
+              <div class="col-md-6 inputGroupContainer">
+                <div class="input-group">
+                  <input class="form-control" type="number" formControlName="carbo" [(ngModel)]="updatedProduct.carbohydrates">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Białko</label>
+              <div class="col-md-6 inputGroupContainer">
+                <div class="input-group">
+                  <input class="form-control" type="number" formControlName="proteins" [(ngModel)]="updatedProduct.proteins">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label">Tłuszcz</label>
+              <div class="col-md-6 inputGroupContainer">
+                <div class="input-group">
+                  <input class="form-control" type="number" formControlName="fat" [(ngModel)]="updatedProduct.fat">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label">Kalorie/100g</label>
+              <div class="col-md-6 inputGroupContainer">
+                <div class="input-group">
+                  <input class="form-control" id="kcal" type="number" formControlName="kcal" [(ngModel)]="updatedProduct.kcal">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="submit" class="btn btn-default" data-dismiss="modal" (click)="argModal.hide();  updateProduct();">Zapisz produkt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

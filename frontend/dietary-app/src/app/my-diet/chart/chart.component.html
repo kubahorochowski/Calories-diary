@@ -1,0 +1,14 @@
+<div class="container wrapper">
+<div>
+  <div>
+    <div>
+      <div style="display: block">
+        <button id = "displayChart" mat-button mat-raised-button color="primary" class="btn btn-warning" (click)="randomize()">Wyświetl wykres</button>
+        <canvas baseChart [data]="barChartData" [options]="barChartOptions"
+                [type]="barChartType" (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

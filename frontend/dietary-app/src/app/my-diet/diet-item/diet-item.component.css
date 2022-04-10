@@ -1,0 +1,9 @@
+p {
+  text-align: center;
+  margin: 8px auto;
+}
+
+i.glyphicon-remove:hover {
+  color: #e73629;
+}
+

@@ -1,0 +1,63 @@
+<h2><b>Cześć {{ user.username }}!</b></h2><br>
+<h3><b>Twoje BMI wynosi {{ calcBmi() }}</b></h3><br>
+<h3><b>Twoja zapotrzebowanie spoczynkowe wynosi: {{kalories()}} kcal</b></h3>
+
+
+<form class="well form-horizontal" action=" " method="post"  id="update_form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <fieldset>
+
+    <!-- Form Name -->
+    <legend><h2><b>Ustawienia konta</b></h2></legend><br>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Login</label>
+      <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input  name="user_name" placeholder="{{ user.username }}" class="form-control"  type="text" disabled>
+        </div>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label">E-Mail</label>
+      <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+          <input name="email" placeholder="E-Mail Address" class="form-control"  type="text" formControlName="email" [(ngModel)]="userEmail">
+        </div>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Waga</label>
+      <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+          <input name="weight" placeholder="kg" class="form-control" type="text" formControlName="weight" [(ngModel)]="userWeight">
+        </div>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Wzrost</label>
+      <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+          <input name="height" placeholder="cm" class="form-control" type="text" formControlName="height" [(ngModel)]="userHeight">
+        </div>
+      </div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label"></label>
+      <div class="col-md-4"><br>
+        <button type="submit" class="btn btn-warning" ><span class="glyphicon glyphicon-send"> Aktualizuj </span></button>
+      </div>
+    </div>
+
+  </fieldset>
+</form>

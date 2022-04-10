@@ -1,0 +1,59 @@
+h2 {
+  text-align: center;
+}
+
+div.input-group {
+  width: 80%;
+}
+
+button.addProd {
+  font-size: 18px;
+  padding: 10px 15px;
+}
+
+button.addProd span.glyphicon {
+  font-size: 16px;
+}
+
+/*allProducts*/
+div.allProducts {
+  text-align: center;
+}
+
+div.allProducts p {
+  font-size: 15px;
+  padding-top: 8px;
+}
+
+button.searchAllProds {
+  margin: 7vh auto;
+  font-size: 18px;
+  padding: 10px 15px;
+}
+
+.firstRow {
+  background-color: #f0ad4e;
+}
+
+ul.productsList {
+  list-style: none;
+  padding: 0;
+}
+
+i.glyphicon-pencil:hover {
+  color: #e73629;
+}
+
+.modal-footer {
+  border: none;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+@media (max-width: 1050px) {
+  .firstRow {
+    display: none;
+  }
+}

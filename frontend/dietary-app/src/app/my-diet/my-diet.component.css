@@ -1,0 +1,62 @@
+h2 {
+  font-size: 40px;
+  padding: 5px;
+  text-align: center;
+}
+
+h3 {
+  font-size: 30px;
+  padding: 5px;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+.container {
+  margin: 3vh auto;
+}
+
+div.container-fluid {
+  margin-top: 10vh;
+}
+
+div.container-fluid div.row {
+  background-color: #f0ad4e;
+}
+
+div.container-fluid div.row:nth-last-of-type(2) {
+  background-color: #DF442A;
+  font-size: 1.3em;
+}
+
+div.container-fluid div.row:last-of-type {
+  background-color: #f0ad4e;
+  font-size: 1.4em;
+}
+
+div.container-fluid div.row p {
+  margin: 16px auto;
+}
+
+.productList {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.myModal {
+  z-index: 100;
+  background-color: red;
+  width: 50vw;
+  height: 80vh;
+}
+
+@media (max-width: 1050px) {
+  .firstRow {
+    display: none;
+  }
+  div.container-fluid div.row:last-of-type {
+    font-size: 1.2em;
+  }
+}

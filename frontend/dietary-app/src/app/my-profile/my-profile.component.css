@@ -1,0 +1,17 @@
+h2{
+  margin-top: 6vh;
+  font-family: cursive;
+}
+
+h2, h3{
+  text-align: center;
+}
+
+h3:last-of-type{
+  margin-bottom: 4vh;
+}
+
+form {
+  max-width: 1000px;
+  margin: 0 auto;
+}

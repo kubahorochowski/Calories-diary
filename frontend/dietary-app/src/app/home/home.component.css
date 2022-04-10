@@ -1,0 +1,59 @@
+h1 {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 3vh;
+  margin-bottom: 5vh;
+  font-family: cursive;
+}
+
+h3 {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 5vh;
+  margin-bottom: 3vh;
+}
+
+.header {
+  height: 70vh;
+  padding: 0;
+  margin-top: -20px;
+  position: relative;
+  background-image: url("../../assets/img/fork_right.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.header div{
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
+
+.header img {
+  max-width: 100%;
+}
+
+div p {
+  font-size: 16px;
+}
+
+section div p {
+  text-align: center;
+}
+
+section div p span {
+  font-weight: bold;
+}
+
+.last {
+  margin-bottom: 10vh;
+}
+
+@media (max-width: 860px) {
+  .header div{
+    left: 50%;
+  }
+}
